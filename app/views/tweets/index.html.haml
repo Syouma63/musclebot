@@ -2,7 +2,7 @@
   - @tweets.each do |tweet|
     .content_post{:style => "background-image: url(#{tweet.image});"}
       .more
-        %span= image_tag 'arrow_top.png'
+        -# %span= image_tag 'arrow_top.png'
         %ul.more_list
           %li
           = link_to '削除', tweet_path(tweet.id), method: :delete, class: "black"
