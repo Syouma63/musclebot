@@ -1,0 +1,165 @@
+.Header {
+  display: flex;
+  width: 100vw;
+  height: 60px;
+  background-color: rgba(122, 122, 122, 0.6);
+  position: relative;
+  color: white;
+  &__container {
+    display: flex;
+  }
+  &__log {
+    font-size: 23px;
+    width: 200px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__lists {
+    width: calc(100vw - 200px);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  &__container ul {
+    display: flex;
+    margin-right: 30px;
+  }
+  &__list {
+    padding-left: 30px;
+  }
+  &__list a {
+    color: white;
+  }
+}
+
+// ビデオ再生
+.content__box__video {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -10;
+  object-fit: cover;
+}
+
+// タイピング
+.typing {
+  height: calc(100vh - 60px);
+  width: 100vw;
+  position: relative;
+}
+
+.typed_wrap {
+  position: absolute;
+  width: 100vh;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.typed_wrap h1 {
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 3rem;
+}
+
+.typed::after {
+  content: "|";
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  50% {opacity: 0;}
+}
+
+// おすすめの筋トレ
+.P_container {
+  margin: 0 auto;
+}
+
+.image {
+  width: calc(100%/3);
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+}
+
+.line1 {
+  margin-bottom: 5rem;
+  justify-content: space-between;
+  display: flex;
+}
+
+.line2 {
+  margin-top: 10rem;
+  justify-content: space-between;
+  display: flex;
+}
+
+.image1 {
+  background-image: url(../images/muscle1.jpg);
+}
+.image2 {
+  background-image: url(../images/muscle2.jpg);
+}
+.image3 {
+  background-image: url(../images/muscle3.jpg);
+}
+.image4 {
+  background-image: url(../images/muscle4.jpg);
+}
+.image5 {
+  background-image: url(../images/muscle5.jpg);
+}
+.image6 {
+  background-image: url(../images/muscle6.jpg);
+}
+
+.P_table {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-size: cover;
+  transition: all 0.3s ease-in-out;
+  z-index: 2;
+}
+
+.P_table:hover {
+  border-radius: 0;
+  width: 300px;
+  height: 280px;
+}
+
+.P_table span {
+  display: block;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: all 0.3 ease-in-out;
+}
+
+
+.P_table:hover span {
+  transform: scale(0);
+}
+
+.P_table .name_container {
+  text-align: center;
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+}
+
+.P_table:hover .name_container {
+  opacity: 1;
+  transform: translate(0, 100%);
+}
+
+.name_container h4 {
+  color: #f8b28b;
+}

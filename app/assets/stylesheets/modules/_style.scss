@@ -1,0 +1,45 @@
+
+.black {
+  color: black;
+}
+
+.header {
+  width: 100vw;
+  height: 60px;
+  background-color: rgba(122, 122, 122, 0.6);
+  text-decoration: none;
+  color: white;
+  &__bar {
+    display: flex;
+    height: 60px;   
+  }
+
+  &__title {
+    font-size: 23px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__right {
+    display: flex;
+    width: calc(100vh - 200px);
+    justify-content: flex-end;
+    margin-right: 30px;
+  }
+
+  &__lists {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__lists ul {
+    display: flex;
+  }
+
+  &__list {
+    padding-left: 30px;
+  }
+}

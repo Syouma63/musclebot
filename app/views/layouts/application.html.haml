@@ -1,0 +1,28 @@
+
+
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Musclebot
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+
+    .header
+      .header__bar
+        %h1.header__title
+          %a(href="/tweets")MuscleBot
+        .header__right
+          .header__lists
+            %ul
+              %li.header__list 
+                %a(href="/tweets/new") 新規投稿
+              %li.header__list マイページ
+              %li.header__list ログアウト
+    = yield
+    %footer
+      %p Copyright MuscleBot 2020.
+      
