@@ -1,0 +1,103 @@
+// tweets
+
+.contents {
+  background-color: whitesmoke;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+
+}
+
+.content_tweet {
+  border: 1px solid #ccc;
+  margin-bottom: 50px;
+  background-color: white;
+}
+
+.scroll {
+  margin: 15px 0;
+  width: 600px;
+  height: calc(100vh - 150px);
+  overflow: hidden;
+  overflow-y: scroll;
+  // border: 2px solid #ccc;
+  
+}
+
+.content_post {
+  margin: 20px;
+  width: 560px;
+  height: 400px;
+  object-fit: cover;
+  color: red($color: #000000);
+}
+
+.content_text {
+  width: 560px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.name {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.text {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+// new
+
+.container {
+  margin: 15px;
+  width: 600px;
+  height: calc(100vh - 154px);
+}
+
+
+.new_title {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  .title {
+    margin-bottom: 20px;
+  }
+  .textarea {
+    height: 300px;
+    resize: none;
+  }
+}
+.image {
+  margin: 20px 0;
+  width: 150px;
+  input {
+    display: none;
+  }
+}
+
+.fa-image {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  font-size: 18px;
+  .submit_list {
+    margin-top: 10px;
+    padding: 10px;
+  }
+}
+

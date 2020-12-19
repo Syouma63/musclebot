@@ -1,11 +1,18 @@
 .contents.row
-  - @tweets.each do |tweet|
-    .content_post{:style => "background-image: url(#{tweet.image});"}
-      .more
-        -# %span= image_tag 'arrow_top.png'
-        %ul.more_list
-          %li
-          = link_to '削除', tweet_path(tweet.id), method: :delete, class: "black"
-      %span.name
-        = tweet.name
-      %p= tweet.text
+  .scroll
+    - @tweets.each do |tweet|
+      -# .content_post{:style => "background-image: url(#{tweet.image});"}
+      .content_tweet
+        .content_post
+          = image_tag tweet.image.url, size: "560x400"
+        .content_text
+          %span.name
+            トレーニング名：
+            = tweet.name
+          %span.text 
+            トレーニング内容： 
+            = tweet.text
+        .more
+          -# %ul.more_list
+          -#   %li
+          -#   = link_to '削除', tweet_path(tweet.id), method: :delete, class: "black"

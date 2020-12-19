@@ -1,4 +1,6 @@
 
+// ヘッダー
+
 .black {
   color: black;
 }
@@ -9,9 +11,10 @@
   background-color: rgba(122, 122, 122, 0.6);
   text-decoration: none;
   color: white;
+  border: solid 1px rgb(168, 164, 164);
   &__bar {
     display: flex;
-    height: 60px;   
+    height: 60px;
   }
 
   &__title {
@@ -24,7 +27,7 @@
 
   &__right {
     display: flex;
-    width: calc(100vh - 200px);
+    width: calc(100vw - 200px);
     justify-content: flex-end;
     margin-right: 30px;
   }
@@ -42,4 +45,18 @@
   &__list {
     padding-left: 30px;
   }
+}
+
+
+// フッター
+
+footer {
+  width: 100vw;
+  height: 60px;
+  background-color: rgba(122, 122, 122, 0.404);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: solid 1px rgb(168, 164, 164);
 }
