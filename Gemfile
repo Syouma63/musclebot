@@ -71,3 +71,9 @@ gem 'font-awesome-sass'
 gem 'carrierwave'
 
 gem 'mini_magick'
+
+gem 'devise'
+
+gem 'devise-i18n'
+
+gem 'devise-i18n-views'

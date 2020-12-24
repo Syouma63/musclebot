@@ -1,7 +1,7 @@
 class Tweet < ApplicationRecord
-  # belongs_to :user
+    belongs_to :user
 
-  validates :text, presence: true
+    validates :text, presence: true
 
-  mount_uploader :image, ImageUploader
+    mount_uploader :image, ImageUploader
 end

@@ -7,21 +7,39 @@
     %title Musclebot
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
   %body
-
-    .header
-      .header__bar
-        %h1.header__title
-          %a(href="/tweets")MuscleBot
-        .header__right
-          .header__lists
+    .flash-alert
+      = flash[:alert]
+    .flash-notice
+      = flash[:notice]
+    .Header
+      .Header__container
+        .Header__log
+          - if user_signed_in?
+            = link_to "MuscleBot", root_path
+          - else
+            = link_to "MuscleBot", '#', class: "sign_modal_content"
+        .Header__lists
+          - if user_signed_in?
             %ul
-              %li.header__list 
-                %a(href="/tweets/new") 新規投稿
-              %li.header__list マイページ
-              %li.header__list ログアウト
+              %li.Header__list
+                = link_to "閲覧ページ", tweets_path
+              %li.Header__list
+                = link_to "投稿する", new_tweet_path
+                %li.Header__list
+                = link_to "マイページ", user_path(current_user.id)
+              %li.Header__list
+                = link_to "ログアウト", destroy_user_session_path, method: :delete
+          - else
+            %ul
+              %li.Header__list
+                = link_to "閲覧ページ", '#', class: "sign_modal_content"
+              %li.Header__list#login-page
+                = link_to "ログイン", '#', class: "sign_modal_content"
+              %li.Header__list
+                = link_to "新規登録", new_user_registration_path
     = yield
     %footer
       %p Copyright MuscleBot 2020.

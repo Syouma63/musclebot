@@ -1,0 +1,35 @@
+
+.devise-container
+  .devise-container__main
+    %h2.devise-container__main__header 新規登録
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = flash[:alert]
+      = render "devise/shared/error_messages", resource: resource
+      .devise-container__main__body
+        .devise-container__main__body__field
+          = f.label :ニックネーム, class: "devise-container__main__body__field__label"
+          -# %span.form-require 必須
+          %br/
+          = f.text_field :nickname, autofocus: true, class: "devise-container__main__body__field__input", placeholder: "例）ニックネーム"
+        .devise-container__main__body__field
+          = f.label :email, class: "devise-container__main__body__field__label"
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "devise-container__main__body__field__input", placeholder: "PC・携帯どちらでも可"
+        .devise-container__main__body__field
+          = f.label :password, class: "devise-container__main__body__field__label"
+          -# - if @minimum_password_length
+          -#   %em
+          -#     (#{@minimum_password_length} characters minimum)
+          %br/
+          = f.password_field :password, autocomplete: "new-password", class: "devise-container__main__body__field__input", placeholder: "6文字以上の半角英数字"
+        .devise-container__main__body__field
+          = f.label :password_confirmation, class: "devise-container__main__body__field__label"
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "new-password", class: "devise-container__main__body__field__input"
+          = f.label :image, class: 'image' do
+            = icon('far', 'image', class: 'fa-image')
+            = f.file_field :image, class: 'fa-image'
+            動画を選択する
+        .devise-container__main__body__field
+          = f.submit "登録する", class: "devise-container__main__body__field__submit"
+    -# = render "devise/shared/links"

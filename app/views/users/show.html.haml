@@ -1,0 +1,20 @@
+.mypage
+  .mypage__container
+    .mypage__container__header
+      .mypage__container__header__picture
+        = image_tag @image.url, class: "mypage__container__header__picture__image"
+      .mypage__container__header__main
+        .mypage__container__header__main__name
+          = @nickname
+        %ul.mypage__container__header__main__lists
+          %li.mypage__container__header__main__lists__list 投稿１００件
+          %li.mypage__container__header__main__lists__list フォロワー１００人
+          %li.mypage__container__header__main__lists__list フォロー１００人
+        .mypage__container__header__main__text
+          これはテストアカウントです。
+
+    -# ヘッダー部分
+    .mypage__container__main
+      .mypage__container__main__image
+        - @tweets.each do |tweet|
+          = image_tag tweet.image.url, class:"mypage__container__main__image__images"
