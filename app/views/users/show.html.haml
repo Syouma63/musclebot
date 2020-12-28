@@ -7,7 +7,7 @@
         .mypage__container__header__main__name
           = @nickname
         %ul.mypage__container__header__main__lists
-          %li.mypage__container__header__main__lists__list 投稿１００件
+          %li.mypage__container__header__main__lists__list 投稿#{@count}件
           %li.mypage__container__header__main__lists__list フォロワー１００人
           %li.mypage__container__header__main__lists__list フォロー１００人
         .mypage__container__header__main__text
@@ -17,4 +17,20 @@
     .mypage__container__main
       .mypage__container__main__image
         - @tweets.each do |tweet|
-          = image_tag tweet.image.url, class:"mypage__container__main__image__images"
+          %section.image-image
+            = image_tag tweet.image.url, class:"mypage__container__main__image__images"
+            .mypage__container__main__image__name
+              %p トレーニング名： #{tweet.name}
+            .mypage__container__main__image__text
+              %p トレーニング内容： #{tweet.text}
+         
+
+.image-modal-wrapper
+  %i.fa.fa-2x.fa-times
+.image-modal-images
+  .image-modal-images__container
+    .image-modal-images__img
+    .mypage__container__main__image__name
+      %p内容
+    .mypage__container__main__image__text
+      %pてxt

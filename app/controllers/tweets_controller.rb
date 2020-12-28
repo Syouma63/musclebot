@@ -3,6 +3,8 @@ class TweetsController < ApplicationController
   def index
     @tweets = Tweet.includes(:user)
     @tweets = Tweet.all.order(created_at: :desc)
+    @image = current_user.image
+    @nickname = current_user.nickname
   end
 
   def new
@@ -18,6 +20,7 @@ class TweetsController < ApplicationController
     tweet = Tweet.find(params[:id])
     tweet.destroy
   end
+
 
   # def show
   #   @tweet = Tweet.find(params[:id])

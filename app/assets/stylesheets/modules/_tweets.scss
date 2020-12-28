@@ -12,11 +12,47 @@
   border: 1px solid #ccc;
   margin-bottom: 50px;
   background-color: white;
+
+  &__header {
+    height: 50px;
+    width: 100%;
+    padding: 0 20px;
+    // background-color: yellow;
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    justify-content: space-between;
+    &__right {
+      display: flex;
+
+      &__image {
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+        margin-top: 7px;
+      }
+  
+      &__nickname {
+        line-height: 50px;
+        margin-left: 10px;
+      }
+    }
+
+    &__other {
+      margin-right: 40px;
+      font-size: 24px;
+      line-height: 50px;
+      width: 60px;
+      height: 100%;
+      text-align: center;
+    }
+
+  }
 }
+
 
 .scroll {
   margin: 15px 0;
-  width: 600px;
+  width: 700px;
   height: calc(100vh - 150px);
   overflow: hidden;
   overflow-y: scroll;
@@ -25,15 +61,22 @@
 }
 
 .content_post {
-  margin: 20px;
-  width: 560px;
+  margin: 0 20px 20px 20px;
+  width: 660px;
   height: 400px;
   object-fit: cover;
   color: red($color: #000000);
+
+  &__image {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    margin-top: 5px;
+  }
 }
 
 .content_text {
-  width: 560px;
+  width: 660px;
   margin: 20px;
   display: flex;
   flex-direction: column;
@@ -101,3 +144,33 @@
   }
 }
 
+// ドロップダウン記述
+
+.menu li {
+  position: relative;
+}
+
+.menu li a {
+  display: block;
+  background: rgb(138, 137, 137);
+  line-height: 40px;
+  font-size: 18px;
+  border-radius: 3px;
+}
+
+.menu li a:hover {
+  background: rgb(185, 185, 185);
+  transition: 0.5s;
+}
+
+.menu li:hover > ul {
+  display: block;
+}
+
+.menu ul {
+  display: none;
+  position: absolute;
+  top: 38px;
+  right: 10px;
+  width: 80px;
+}

@@ -4,8 +4,24 @@
     - @tweets.each do |tweet|
       -# .content_post{:style => "background-image: url(#{tweet.image});"}
       .content_tweet
+        .content_tweet__header
+          .content_tweet__header__right
+            = image_tag @image.to_s, class:"content_tweet__header__right__image"
+            .content_tweet__header__right__nickname
+              = @nickname
+          .content_tweet__header__other
+            -# 後でここにif文を記述 自身のツイートの場合表示、違う場合はコメント
+            %ul.menu
+              %li
+                %i.fas.fa-bars
+                %ul
+                  %li
+                    = link_to'編集', root_path
+                  %li
+                    = link_to'削除', "/tweets/#{tweet.id}", method: :delete
+
         .content_post
-          = image_tag tweet.image.url, size: "560x400"
+          = image_tag tweet.image.url, class:"content_post__image"
         .content_text
           %span.name
             トレーニング名：
