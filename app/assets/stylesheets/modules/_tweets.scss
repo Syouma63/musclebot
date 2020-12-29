@@ -174,3 +174,103 @@
   right: 10px;
   width: 80px;
 }
+
+
+// 編集、削除後遷移ページの記述
+
+.contents {
+  width: 100%;
+  height: calc(100vh - 120px);
+}
+
+.success {
+  margin: 60px auto;
+  width: 80%;
+  height: 200px;
+  text-align: center;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px #b3b2b2;
+}
+
+.success-text {
+  font-size: 25px;
+  color: rgb(44, 43, 43);
+  margin: 30px 30px 40px 30px;
+}
+
+.success-button {
+  font-size: 20px;
+  color: rgb(2, 200, 250);
+  border: 2px solid rgb(2, 200, 250);
+  border-radius: 5px;
+  padding: 15px 50px;
+}
+
+.success-button:hover {
+  background-color: rgb(224, 250, 249);
+  transition: 0.8s;
+}
+
+
+// 詳細ページの記述
+
+.show-page {
+  width: 100%;
+  height: calc(100vh - 120px);
+  text-align: center;
+
+  &__container {
+    width: 80%;
+    margin: 0 auto;
+    // background-color: rgb(2, 200, 250);
+    
+    &__header {
+      width: 100%;
+      height: 60px;
+      margin: 0 auto;
+      border-bottom: 2px solid rgb(173, 173, 173);
+
+      &__text {
+        line-height: 60px;
+        font-size: 30px;
+        color: rgb(34, 34, 34);
+      }
+    }
+    
+    &__main {
+      overflow: scroll;
+      margin-top: 30px;
+      width: 100%;
+      &__image {
+        width: 80%;
+        height: 400px;
+        margin: auto;
+        object-fit: cover;
+        box-shadow: 0px 0px 8px rgb(170, 168, 168);
+        border-radius: 5px;
+        
+        &__images {
+          width: 90%;
+          height: 400px;
+          object-fit: contain;
+        }
+      }
+
+      &__text {
+        margin: 20px auto;
+        width: 80%;
+        text-align: center;
+
+        &__lists {
+          width: 80%;
+          border: rgb(185, 183, 183) 2px solid;
+          border-radius: 10px;
+          margin: 0 auto 10px;
+          text-align: start;
+          padding: 3px 5px;
+        }
+      }
+    }
+  }
+}

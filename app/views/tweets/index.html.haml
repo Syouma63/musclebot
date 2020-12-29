@@ -6,20 +6,24 @@
       .content_tweet
         .content_tweet__header
           .content_tweet__header__right
-            = image_tag @image.to_s, class:"content_tweet__header__right__image"
+            = image_tag tweet.user.image.to_s, class:"content_tweet__header__right__image"
             .content_tweet__header__right__nickname
-              = @nickname
+              = tweet.user.nickname
           .content_tweet__header__other
             -# 後でここにif文を記述 自身のツイートの場合表示、違う場合はコメント
             %ul.menu
               %li
                 %i.fas.fa-bars
-                %ul
-                  %li
-                    = link_to'編集', root_path
-                  %li
-                    = link_to'削除', "/tweets/#{tweet.id}", method: :delete
-
+                - if user_signed_in? && current_user.id == tweet.user_id
+                  %ul
+                    %li
+                      = link_to'編集', edit_tweet_path(tweet.id), method: :get
+                    %li
+                      = link_to'削除', tweet_path(tweet.id), method: :delete
+                - else
+                  %ul
+                    %li
+                      = link_to '詳細', tweet_path(tweet.id), class:""
         .content_post
           = image_tag tweet.image.url, class:"content_post__image"
         .content_text
