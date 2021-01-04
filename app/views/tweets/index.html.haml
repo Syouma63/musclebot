@@ -6,7 +6,7 @@
       .content_tweet
         .content_tweet__header
           .content_tweet__header__right
-            = image_tag tweet.user.image.to_s, class:"content_tweet__header__right__image"
+            = link_to image_tag(tweet.user.image.to_s, class:"content_tweet__header__right__image"), user_path(tweet.user.id)
             .content_tweet__header__right__nickname
               = tweet.user.nickname
           .content_tweet__header__other
@@ -16,6 +16,8 @@
                 %i.fas.fa-bars
                 - if user_signed_in? && current_user.id == tweet.user_id
                   %ul
+                    %li
+                      = link_to '詳細', tweet_path(tweet.id), class:""
                     %li
                       = link_to'編集', edit_tweet_path(tweet.id), method: :get
                     %li
@@ -33,7 +35,5 @@
           %span.text 
             トレーニング内容： 
             = tweet.text
-        .more
-          -# %ul.more_list
-          -#   %li
-          -#   = link_to '削除', tweet_path(tweet.id), method: :delete, class: "black"
+        
+        

@@ -4,4 +4,6 @@ class Tweet < ApplicationRecord
     validates :text, presence: true
 
     mount_uploader :image, ImageUploader
+
+    has_many :comments
 end

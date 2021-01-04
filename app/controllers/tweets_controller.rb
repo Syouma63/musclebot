@@ -5,6 +5,8 @@ class TweetsController < ApplicationController
     @tweets = Tweet.all.order(created_at: :desc)
     @image = current_user.image
     @nickname = current_user.nickname
+    @user = User.where(params[:id])
+    # binding.pry
   end
 
   def new
@@ -31,6 +33,8 @@ class TweetsController < ApplicationController
   end
   def show
     @tweet = Tweet.find(params[:id])
+    @comment = Comment.new
+    @comments = @tweet.comments.includes(:user)
   end
 
   private

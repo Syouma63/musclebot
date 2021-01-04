@@ -10,6 +10,24 @@
           %h2 トレーニング名：#{@tweet.name}
         .show-page__container__main__text__lists
           %h2 トレーニング内容：#{@tweet.text}
+      .show-page__container__main__comments
+        .show-page__container__main__comments__lists
+          %h4.show-page__container__main__comments__lists__list コメント一覧
+          .show-page__container__main__comments__lists__main
+            - @comments.each do |comment|
+              .show-page__container__main__comments__lists__main__p
+                %strong
+                  = link_to "#{comment.user.nickname} :", "/users/#{comment.user_id}", class:"show-page__container__main__comments__lists__main__link"
+                = comment.text
 
+        .show-page__container__main__comments__form
+          - if user_signed_in?
+            = form_with model: [@tweet, @comment], local: true do |f|
+              = f.text_area :text, placeholder: "コメントを追加", rows: "2", class:"show-page__container__main__comments__form__textarea"
+              = button_tag type: 'submit', class: "show-page__container__main__comments__form__submit" do
+                %i.fas.fa-paper-plane
+          - else
+            %strong
+              %p ＊＊＊コメントの投稿には新規登録/ログインが必要です＊＊＊
 
     

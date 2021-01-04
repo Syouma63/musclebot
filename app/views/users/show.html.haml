@@ -2,17 +2,31 @@
   .mypage__container
     .mypage__container__header
       .mypage__container__header__picture
-        = image_tag @image.url, class: "mypage__container__header__picture__image"
+        = image_tag @user.image.to_s, class: "mypage__container__header__picture__image"
       .mypage__container__header__main
         .mypage__container__header__main__name
-          = @nickname
+          = @user.nickname
+          - unless @user == current_user
+            - unless current_user.following?(@user)
+              = link_to "フォローする", follow_path(@user.id), method: :POST, class: "follow-black"
+            - else
+              = link_to "フォローを外す", unfollow_path(@user.id), method: :POST, class: "follow-black"
+          - else
+            = link_to "設定", "#", class:"follow-black"
         %ul.mypage__container__header__main__lists
           %li.mypage__container__header__main__lists__list 投稿#{@count}件
-          %li.mypage__container__header__main__lists__list フォロワー１００人
-          %li.mypage__container__header__main__lists__list フォロー１００人
+          %li.mypage__container__header__main__lists__list フォロワー#{@user.follower.count}人
+          %li.mypage__container__header__main__lists__list フォロー#{@user.followed.count}人
         .mypage__container__header__main__text
           これはテストアカウントです。
-
+        -# - if user_signed_in?
+        -#   = @user.each do |user|
+        -#     %p
+        -#       id: #{user.id} email#{user.email}
+        -#       - if currenr_user.following?(user)
+        -#         = link_to "フォロー外す", unfollow_path(user.id), method: :POST
+        -#       - else
+        -#         = link_to 'フォローする', follow_path(user.id), method: :POST
     -# ヘッダー部分
     .mypage__container__main
       .mypage__container__main__image
