@@ -18,7 +18,7 @@
           %li.mypage__container__header__main__lists__list フォロー#{@user.follower.count}人
           %li.mypage__container__header__main__lists__list フォロワー#{@user.followed.count}人
         .mypage__container__header__main__text
-          これはテストアカウントです。
+          = @user.text
 
     -# ヘッダー部分
     .mypage__container__main
