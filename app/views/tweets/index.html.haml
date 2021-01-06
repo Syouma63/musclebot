@@ -17,17 +17,22 @@
                 - if user_signed_in? && current_user.id == tweet.user_id
                   %ul
                     %li
-                      = link_to '詳細', tweet_path(tweet.id), class:""
+                      = link_to '詳細', tweet_path(tweet.id)
                     %li
-                      = link_to'編集', edit_tweet_path(tweet.id), method: :get
+                      = link_to '編集', edit_tweet_path(tweet.id), method: :get
                     %li
-                      = link_to'削除', tweet_path(tweet.id), method: :delete
+                      = link_to '削除', tweet_path(tweet.id), method: :delete
                 - else
                   %ul
                     %li
                       = link_to '詳細', tweet_path(tweet.id), class:""
+
         .content_post
-          = image_tag tweet.image.url, class:"content_post__image"
+          = video_tag tweet.video.url, controls: true, class:"content_post__image"
+        .content_like
+          %span#likes_buttons{ id: tweet.id}
+            = render partial: 'likes/like', locals: { tweet: tweet, likes: @likes}
+
         .content_text
           %span.name
             トレーニング名：
@@ -35,5 +40,6 @@
           %span.text 
             トレーニング内容： 
             = tweet.text
+
         
         

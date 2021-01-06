@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
+  has_many :likes, dependent: :destroy
+  
   has_many :comments
 
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy  #フォロー取得
@@ -17,6 +19,7 @@ class User < ApplicationRecord
   has_many :following_user, through: :follower, source: :followed  # 自分がフォローしている人
   has_many :follower_user, through: :followed, source: :follower  # 自分をフォローしている人
 
+  
   # ユーザーをフォローする
   def follow(user_id)
     follower.create(followed_id: user_id)

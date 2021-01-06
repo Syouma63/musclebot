@@ -1,0 +1,14 @@
+- unless tweet.like_user(current_user.id).blank?
+  = link_to tweet_like_path(tweet_id: tweet.id, id: tweet.likes[0].id), method: :delete, remote: true do
+    .vertical_like
+      %i.fas.fa-heart.unlike-btn
+      .unlike
+        = tweet.likes_count
+        人が『いいね』しました
+- else
+  = link_to tweet_likes_path(tweet.id), method: :post, remote: true do
+    .vertical_like
+      %i.far.fa-heart.like-btn
+      .like
+        = tweet.likes_count
+        人が『いいね』しました

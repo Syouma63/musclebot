@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'likes/create'
+  get 'likes/destroy'
   get 'users/show'
   # ルーティングをusers/registrationにしてコントローラーをカスタマイズできるようにする記述
   devise_for :users
@@ -9,8 +11,9 @@ Rails.application.routes.draw do
   post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' #フォロー外す
 
-  resources :tweets, only: [:index, :new, :show, :create, :destroy, :edit, :update] do
+  resources :tweets do
     resources :comments, only: :create
+    resources :likes, only: [:create, :destroy]
   end
   resources :users, only: [:show, :index]
 end

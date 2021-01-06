@@ -4,7 +4,11 @@
       %h1.show-page__container__header__text 詳細ページ
     .show-page__container__main
       .show-page__container__main__image
-        = image_tag @tweet.image.url, class:"show-page__container__main__image__images"
+        = video_tag @tweet.video.to_s, controls: true, class:"show-page__container__main__image__images"
+      .show-page__container__main__like
+        %span#likes_buttons{ id: @tweet.id}
+          = render partial: 'likes/like', locals: { tweet: @tweet, likes: @likes}
+
       .show-page__container__main__text
         .show-page__container__main__text__lists
           %h2 トレーニング名：#{@tweet.name}
