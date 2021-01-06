@@ -2,7 +2,10 @@
   .mypage__container
     .mypage__container__header
       .mypage__container__header__picture
-        = image_tag @user.image.to_s, class: "mypage__container__header__picture__image"
+        - unless @user.blank?
+          = image_tag "/assets/default.png", class:"mypage__container__header__picture__image"
+        - else
+          = image_tag @user.image.to_s, class: "mypage__container__header__picture__image"
       .mypage__container__header__main
         .mypage__container__header__main__name
           = @user.nickname
@@ -18,6 +21,7 @@
           %li.mypage__container__header__main__lists__list フォロー#{@user.follower.count}人
           %li.mypage__container__header__main__lists__list フォロワー#{@user.followed.count}人
         .mypage__container__header__main__text
+          コメント：
           = @user.text
 
     -# ヘッダー部分

@@ -2,14 +2,14 @@ ja:
   activerecord:
     errors:
       models:
-        user:
+        user: 
           attributes:
             nickname:
-                taken: "は既に使用されています。"
-                blank: "が入力されていません。"
-                too_short: "は%{count}文字以上に設定して下さい。"
-                too_long: "は%{count}文字以下に設定して下さい。"
-                invalid: "は有効でありません。"
+              taken: "は既に使用されています。"
+              blank: "が入力されていません。"
+              too_short: "は%{count}文字以上に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい。"
+              invalid: "は有効でありません。"
             email:
               taken: "は既に使用されています。"
               blank: "が入力されていません。"
@@ -23,15 +23,9 @@ ja:
               too_long: "は%{count}文字以下に設定して下さい。"
               invalid: "は有効でありません。"
               confirmation: "が内容とあっていません。"
-            first_name:
-                taken: "は既に使用されています。"
-                blank: "が入力されていません。"
-                too_short: "は%{count}文字以上に設定して下さい。"
-                too_long: "は%{count}文字以下に設定して下さい。"
-                invalid: "は有効でありません。"
     attributes:
       user:
-        nickname: ニックネーム
+        nickname: 
         image: "トプ画"
         email: "メールアドレス"
         password: "パスワード"
@@ -41,32 +35,7 @@ ja:
     models:
       user: ユーザー
 
-    attributes:
-      profile:
-        first_name: "名前"
-        family_name: "氏名"
-        first_name_kana: "名前(かな)"
-        family_name_kana: "氏名(かな)"
-        birthday: "生年月日"
-
-    models:
-      profile: "本人確認情報"
-
-    attributes:
-      address:
-        ship_first_name: "氏名"
-        ship_family_name: "名前"
-        ship_first_name_kana: "氏名(かな)"
-        ship_family_name_kana: "名前(かな)"
-        post_code: "郵便番号"
-        prefecture_id: "都道府県"
-        city: "市町村"
-        block_number: "番地"
-        building_number: "建物名"
-        phone_number: "電話番号"
-
-    models:
-      address: "お届け先情報"
+    
 
   devise:
     confirmations:

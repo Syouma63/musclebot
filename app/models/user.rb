@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-         validates :nickname, uniqueness: true
+  validates :nickname, presence: true, uniqueness: true
   
   has_many :tweets, dependent: :destroy
 
