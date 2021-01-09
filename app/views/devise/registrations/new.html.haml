@@ -38,6 +38,7 @@
             = icon('far', 'image', class: 'fa-image')
             = f.file_field :image, class: 'fa-image'
             トプ画を選択
+            %span.form-require 必須
         .devise-container__main__body__field
           = f.submit "登録する", class: "devise-container__main__body__field__submit"
     -# = render "devise/shared/links"

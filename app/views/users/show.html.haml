@@ -2,10 +2,7 @@
   .mypage__container
     .mypage__container__header
       .mypage__container__header__picture
-        - unless @user.blank?
-          = image_tag "/assets/default.png", class:"mypage__container__header__picture__image"
-        - else
-          = image_tag @user.image.to_s, class: "mypage__container__header__picture__image"
+        = image_tag @user.image.to_s, class: "mypage__container__header__picture__image"
       .mypage__container__header__main
         .mypage__container__header__main__name
           = @user.nickname
@@ -15,7 +12,7 @@
             - else
               = link_to "フォローを外す", unfollow_path(@user.id), method: :POST, class: "follow-black"
           - else
-            = link_to "設定", "#", class:"follow-black"
+            = link_to "設定", edit_user_registration_path, class:"follow-black"
         %ul.mypage__container__header__main__lists
           %li.mypage__container__header__main__lists__list 投稿#{@count}件
           %li.mypage__container__header__main__lists__list フォロー#{@user.follower.count}人

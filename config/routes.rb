@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get 'likes/destroy'
   get 'users/show'
   # ルーティングをusers/registrationにしてコントローラーをカスタマイズできるようにする記述
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: "users/sessions",
+    registrations: "users/registrations"
+  }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'posts#index'
 
