@@ -15,7 +15,13 @@ class TweetsController < ApplicationController
   end
 
   def create
-    Tweet.create(tweet_params)
+    @tweet = Tweet.create(tweet_params)
+    if @tweet.save
+      redirect_to tweets_path, notice: "投稿しました。"
+    else
+      flash[:alert] = @tweet.errors.full_messages.join(',')
+      render :new        
+    end
   end
 
   def destroy
@@ -29,8 +35,17 @@ class TweetsController < ApplicationController
 
   def update
     tweet = Tweet.find(params[:id])
-    tweet.update(tweet_params)
+    # tweet.update(tweet_params)
+
+    if tweet.update(tweet_params)
+      redirect_to tweets_path, notice: "ツイートが更新されました。"
+    else
+      flash[:alert] = tweet.errors.full_messages.join(',')
+      redirect_to edit_tweet_path        
+    end
+
   end
+
   def show
     @tweet = Tweet.find(params[:id])
     @comment = Comment.new

@@ -1,7 +1,7 @@
 class Tweet < ApplicationRecord
     belongs_to :user
 
-    validates :text, presence: true
+    validates :name, :text, :video, presence: true
 
     mount_uploader :video, VideoUploader
 
