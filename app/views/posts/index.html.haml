@@ -20,13 +20,13 @@
           %li.Header__list
             = link_to "投稿する", new_tweet_path
           %li.Header__list
+            = link_to "マイページ", user_path(current_user.id)
+          %li.Header__list
             = link_to "ログアウト", destroy_user_session_path, method: :delete
       - else
         %ul
           %li.Header__list
-            .sign_modal_content 閲覧ページ
-          %li.Header__list
-            .sign_modal_content ログイン
+            = link_to "ログイン", new_user_session_path, class: "sign_modal_content"
           %li.Header__list
             = link_to "新規登録", new_user_registration_path
 
@@ -36,7 +36,7 @@
     %h1
       %span.typed 
 
-= render '/devise/sessions/new'
+-# = render '/devise/sessions/new'
 -# -# ログインモーダル表示
 -# .sign_modal_wrapper
 -# .sign_modal_sign-in

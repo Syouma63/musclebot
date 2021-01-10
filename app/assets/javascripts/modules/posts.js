@@ -21,16 +21,17 @@ $(function() {
 // })
 
 // ログインモーダル表示
-$(function() {
-  $('.sign_modal_content').click(function() {
-    $('.sign_modal_wrapper').fadeIn();
-    $('.sign_modal_sign-in').fadeIn();
-  });
-});
+// $(function() {
+//   $('.sign_modal_content').click(function() {
+//     $('.sign_modal_wrapper').fadeIn();
+//     $('.sign_modal_sign-in').fadeIn();
+//   });
+// });
 
-$(function() {
-  $('.fa').click(function() {
-    $('.sign_modal_wrapper').fadeOut();
-    $('.sign_modal_sign-in').fadeOut();
-  });
-});
+// $(function() {
+//   $('.fa').click(function() {
+//     $('.sign_modal_wrapper').fadeOut();
+//     $('.sign_modal_sign-in').fadeOut();
+//   });
+// });
+

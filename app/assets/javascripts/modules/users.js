@@ -50,6 +50,21 @@ $(function() {
 });
 
 
+// フォローモーダル表示
+$(function() {
+  $('.follow_modal_content').click(function() {
+    $('.follow_modal_wrapper').fadeIn();
+    $('.follow_modal_sign-in').fadeIn();
+  });
+});
+
+$(function() {
+  $('.fa').click(function() {
+    $('.follow_modal_wrapper').fadeOut();
+    $('.follow_modal_sign-in').fadeOut();
+  });
+});
+
 // クリックしてたら表示させる記述
 // $(function() {
 //   $('.image-image').click(function() {
