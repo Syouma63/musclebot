@@ -42,7 +42,7 @@ $(document).ready(function () {
 
 
 // 編集ページ 動画を変更するを押したら動画が消える
-$(function() {
+$(document).on('turbolinks:load',function() {
   $('.images').click(function() {
     $('.select').fadeOut();
     $('.img_del').fadeOut();
@@ -53,7 +53,7 @@ $(function() {
 // フォローモーダル表示
 
 // フォロワー
-$(function() {
+$(document).on('turbolinks:load', function() {
   $('.followed_modal_content').click(function() {
     $('.followed_modal_wrapper').fadeIn();
     $('.followed_modal').fadeIn();
@@ -61,7 +61,7 @@ $(function() {
 });
 
 // フォロー
-$(function() {
+$(document).on('turbolinks:load', function() {
   $('.follower_modal_content').click(function() {
     $('.follower_modal_wrapper').fadeIn();
     $('.follower_modal').fadeIn();
@@ -71,7 +71,7 @@ $(function() {
 // モーダル表示を消す
 
 // フォロワー
-$(function() {
+$(document).on('turbolinks:load',function() {
   $('.fa').click(function() {
     $('.followed_modal_wrapper').fadeOut();
     $('.followed_modal').fadeOut();
@@ -79,7 +79,7 @@ $(function() {
 });
 
 // フォロー
-$(function() {
+$(document).on('turbolinks:load',function() {
   $('.fa').click(function() {
     $('.follower_modal_wrapper').fadeOut();
     $('.follower_modal').fadeOut();

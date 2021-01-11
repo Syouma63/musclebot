@@ -5,7 +5,7 @@
       .input 
         = f.text_field :name, placeholder: "メニュー名", class: 'title'
         = f.text_area :text, placeholder: "メニュー内容", class: 'textarea'
-      = f.label :video, for: "upload-image", class: 'image' do
+      = f.label :video, for: "upload-image", class: 'image', data: {"data-turbolinks" => "false"} do
         %i.far.image.fa-image.img-sel
           動画を選択する
         = f.file_field :video, class: 'img-video', id: "upload-image"

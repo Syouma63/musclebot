@@ -1,0 +1,7 @@
+- if user == current_user
+  = link_to "", "#"
+- else
+  - unless current_user.following?(user)
+    = link_to "フォローする", follow_path(user.id), method: :POST, class: "follow-black",id: "follower-modal", remote: true
+  - else
+    = link_to "フォロー中", unfollow_path(user.id), method: :POST, class: "followed-black",id: "followed-modal", remote: true

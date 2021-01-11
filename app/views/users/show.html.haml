@@ -7,16 +7,14 @@
         .mypage__container__header__main__name
           = @user.nickname
           - unless @user == current_user
-            - unless current_user.following?(@user)
-              = link_to "フォローする", follow_path(@user.id), method: :POST, class: "follow-black"
-            - else
-              = link_to "フォローを外す", unfollow_path(@user.id), method: :POST, class: "follow-black"
+            %span#follow_button_{ id: @user.id}
+              = render "users/follow-button", user: @user
           - else
             = link_to "設定", edit_user_registration_path, class:"follow-black"
         %ul.mypage__container__header__main__lists
           %li.mypage__container__header__main__lists__list 投稿#{@count}件
-          %li.mypage__container__header__main__lists__list.follower_modal_content フォロー#{@user.follower.count}人
-          %li.mypage__container__header__main__lists__list.followed_modal_content フォロワー#{@user.followed.count}人
+          %li.mypage__container__header__main__lists__list.follower_modal_content#follower-count_{ id: @user.id} フォロー#{@user.follower.count}人
+          %li.mypage__container__header__main__lists__list.followed_modal_content#followed-count_{ id: @user.id} フォロワー#{@user.followed.count}人
         .mypage__container__header__main__text
           コメント：
           = @user.text
@@ -48,11 +46,15 @@
             .followed_modal__container__main__list__lists__name
               = user.nickname
           .followed_modal__container__main__list__follow
-            - unless current_user.following?(user)
-              = link_to "フォローする", follow_path(user.id), method: :POST, class: "follow-black"
-            - else
-              = link_to "フォロー中", unfollow_path(user.id), method: :POST, class: "follow-black"
-        
+            %span#follow-buttons_{ id: user.id}
+              = render "users/follow-buttons", user: user
+            -# - if user == current_user
+            -#   = link_to "", "#"
+            -# - else
+            -#   - unless current_user.following?(user)
+            -#     = link_to "フォローする", follow_path(user.id), method: :POST, class: "follow-black"
+            -#   - else
+            -#     = link_to "フォロー中", unfollow_path(user.id), method: :POST, class: "follow-black"
 
 -# フォローモーダル表示         
 .follower_modal_wrapper
@@ -60,7 +62,7 @@
   %i.fa.fa-2x.fa-times
   .follower_modal__container
     .follower_modal__container__header
-      .follower_modal__container__header__name フォロワー
+      .follower_modal__container__header__name フォロー
     .follower_modal__container__main
       - @user.following_user.each do |user|
         .follower_modal__container__main__list
@@ -69,10 +71,16 @@
             .follower_modal__container__main__list__lists__name
               = user.nickname
           .follower_modal__container__main__list__follow
-            - unless current_user.following?(user)
-              = link_to "フォローする", follow_path(user.id), method: :POST, class: "follow-black"
-            - else
-              = link_to "フォロー中", unfollow_path(user.id), method: :POST, class: "follow-black"
+            %span#follow-buttons_{ id: user.id}
+              = render "users/follow-buttons", user: user
+
+            -# - if user == current_user
+            -#   = link_to "", "#"
+            -# - else
+            -#   - unless current_user.following?(user)
+            -#     = link_to "フォローする", follow_path(user.id), method: :POST, class: "follow-black"
+            -#   - else
+            -#     = link_to "フォロー中", unfollow_path(user.id), method: :POST, class: "follow-black"
         
 
     

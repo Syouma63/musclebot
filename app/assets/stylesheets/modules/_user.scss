@@ -137,6 +137,22 @@
   opacity: 0.7;
 }
 
+.followed-black {
+  height: 25px;
+  line-height: 25px;
+  padding: 5px 10px;
+  margin-left: 5px;
+  // color: white;
+  color: rgb(187, 184, 184);
+  background-color: white;
+  // background-color: rgb(187, 184, 184);
+  border: 2px solid rgb(187, 184, 184);
+  border-radius: 5px;
+  font-size: 20px;
+}
+.followed-black:hover {
+  opacity: 0.7;
+}
 // フォロワーモーダル表示
 .followed_modal_content {
   cursor: pointer;

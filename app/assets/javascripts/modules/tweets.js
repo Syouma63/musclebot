@@ -42,7 +42,7 @@ $(document).ready(function () {
 
 
 // 編集ページ 動画を変更するを押したら動画が消える
-$(function() {
+$(document).on('turbolinks:load',function() {
   $('.img-sel').click(function() {
     $('.select').fadeOut();
     $('.img_del').fadeOut();
