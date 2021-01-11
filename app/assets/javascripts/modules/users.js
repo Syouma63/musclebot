@@ -51,17 +51,38 @@ $(function() {
 
 
 // フォローモーダル表示
+
+// フォロワー
 $(function() {
-  $('.follow_modal_content').click(function() {
-    $('.follow_modal_wrapper').fadeIn();
-    $('.follow_modal_sign-in').fadeIn();
+  $('.followed_modal_content').click(function() {
+    $('.followed_modal_wrapper').fadeIn();
+    $('.followed_modal').fadeIn();
   });
 });
 
+// フォロー
+$(function() {
+  $('.follower_modal_content').click(function() {
+    $('.follower_modal_wrapper').fadeIn();
+    $('.follower_modal').fadeIn();
+  });
+});
+
+// モーダル表示を消す
+
+// フォロワー
 $(function() {
   $('.fa').click(function() {
-    $('.follow_modal_wrapper').fadeOut();
-    $('.follow_modal_sign-in').fadeOut();
+    $('.followed_modal_wrapper').fadeOut();
+    $('.followed_modal').fadeOut();
+  });
+});
+
+// フォロー
+$(function() {
+  $('.fa').click(function() {
+    $('.follower_modal_wrapper').fadeOut();
+    $('.follower_modal').fadeOut();
   });
 });
 

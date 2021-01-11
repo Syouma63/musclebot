@@ -34,8 +34,6 @@
                 = link_to "ログアウト", destroy_user_session_path, method: :delete
           - else
             %ul
-              %li.Header__list
-                = link_to "閲覧ページ", '#', class: "sign_modal_content"
               %li.Header__list#login-page
                 = link_to "ログイン", new_user_session_path, class: "sign_modal_content"
               %li.Header__list
