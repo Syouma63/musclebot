@@ -328,9 +328,30 @@
           &__main {
             padding: 20px 10px;
             text-align: left;
+            overflow: scroll;
+            max-height: 400px;
 
             &__link {
               color: black;
+              height: 35px;
+              border-bottom: 1px solid rgb(209, 209, 209);
+              display: flex;
+              justify-content: space-around;
+              align-items: flex-end;
+              max-height: 85px;
+              &__left {
+                max-height: 85px;
+                width: 70%;
+                &__a {
+                  color: black;
+                  margin-right: 10px;
+                }
+              }
+              &__right {
+                opacity: 0.7;
+                width: 30%;
+                text-align: right;
+              }
             }
           }
         }

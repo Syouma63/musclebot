@@ -19,14 +19,17 @@
           %h4.show-page__container__main__comments__lists__list コメント一覧
           .show-page__container__main__comments__lists__main
             - @comments.each do |comment|
-              .show-page__container__main__comments__lists__main__p
-                %strong
-                  = link_to "#{comment.user.nickname} :", "/users/#{comment.user_id}", class:"show-page__container__main__comments__lists__main__link"
-                = comment.text
+              .show-page__container__main__comments__lists__main__link
+                .show-page__container__main__comments__lists__main__link__left
+                  %strong
+                    = link_to "#{comment.user.nickname} :", "/users/#{comment.user_id}", class:"show-page__container__main__comments__lists__main__link__left__a"
+                  = comment.text
+                .show-page__container__main__comments__lists__main__link__right
+                  = comment.created_at.strftime("%Y-%m-%d %H:%M")
 
         .show-page__container__main__comments__form
           - if user_signed_in?
-            = form_with model: [@tweet, @comment], local: true do |f|
+            = form_with model: [@tweet, @comment], local: true, id: "new_comment", remote: true do |f|
               = f.text_area :text, placeholder: "コメントを追加", rows: "2", class:"show-page__container__main__comments__form__textarea"
               = button_tag type: 'submit', class: "show-page__container__main__comments__form__submit" do
                 %i.fas.fa-paper-plane
