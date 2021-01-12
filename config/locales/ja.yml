@@ -1,12 +1,12 @@
 ja:
   activerecord:
     models:
-      product: 商品
+      tweet: 投稿
     attributes:
-      product:
-        name: 商品名
-        price: 商品価格
-        infomation: 商品の説明
+      tweet:
+        name: メニュー名
+        text: メニュー内容
+        video: 動画
         images: 商品画像
         prefecture_id: 発送元地域
         condition_id: 商品の状態
