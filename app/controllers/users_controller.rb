@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :move_to_index, except: [:index, :show, :search]
   def show
     @user = User.find(params[:id])
     @nickname = current_user.nickname
@@ -11,4 +12,7 @@ class UsersController < ApplicationController
 
   end
   
+  def search
+    @users = User.search(params[:keyword])
+  end
 end

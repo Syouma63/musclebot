@@ -35,4 +35,13 @@ class User < ApplicationRecord
   def following?(user)
     following_user.include?(user)
   end
+
+  # 検索機能
+  def self.search(search)
+    if search != ""
+      User.where('nickname LIKE(?)', "%#{search}%")
+    else
+      User.all
+    end
+  end
 end

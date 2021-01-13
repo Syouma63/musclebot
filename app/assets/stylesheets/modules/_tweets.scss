@@ -4,8 +4,10 @@
   background-color: whitesmoke;
   width: 100vw;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   overflow: scroll;
+  align-items: center;
 }
 
 .content_tweet {
@@ -54,8 +56,9 @@
 }
 
 
+
 .scroll {
-  margin: 15px 0;
+  margin: auto;
   width: 700px;
   height: calc(100vh - 150px);
   overflow: hidden;

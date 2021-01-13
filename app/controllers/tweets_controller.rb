@@ -1,12 +1,11 @@
 class TweetsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show, :search]
   def index
     @tweets = Tweet.includes(:user)
     @tweets = Tweet.all.order(created_at: :desc)
     @image = current_user.image
     @nickname = current_user.nickname
     @user = User.where(params[:id])
-    # binding.pry
   end
 
   def new

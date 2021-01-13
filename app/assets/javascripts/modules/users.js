@@ -86,6 +86,8 @@ $(document).on('turbolinks:load',function() {
   });
 });
 
+
+
 // クリックしてたら表示させる記述
 // $(function() {
 //   $('.image-image').click(function() {

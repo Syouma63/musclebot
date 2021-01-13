@@ -17,6 +17,13 @@ Rails.application.routes.draw do
   resources :tweets do
     resources :comments, only: :create
     resources :likes, only: [:create, :destroy]
+    collection do
+      get 'search'
+    end
   end
-  resources :users, only: [:show, :index]
+  resources :users, only: [:show, :index] do
+    collection do
+      get 'search'
+    end
+  end
 end
