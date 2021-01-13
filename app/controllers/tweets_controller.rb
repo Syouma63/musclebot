@@ -2,7 +2,7 @@ class TweetsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :search]
   def index
     @tweets = Tweet.includes(:user)
-    @tweets = Tweet.all.order(created_at: :desc)
+    @tweets = @tweets.where(user_id: [current_user.id, *current_user.following_user]).order(created_at: :desc)
     @image = current_user.image
     @nickname = current_user.nickname
     @user = User.where(params[:id])

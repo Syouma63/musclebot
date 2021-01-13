@@ -44,7 +44,7 @@
       - @user.follower_user.each do |user|
         .followed_modal__container__main__list
           .followed_modal__container__main__list__lists
-            = image_tag user.image.to_s, class: "followed_modal__container__main__list__lists__image"
+            = link_to image_tag(user.image.to_s, class:"followed_modal__container__main__list__lists__image"), user_path(user.id)
             .followed_modal__container__main__list__lists__name
               = user.nickname
           .followed_modal__container__main__list__follow
@@ -69,7 +69,7 @@
       - @user.following_user.each do |user|
         .follower_modal__container__main__list
           .follower_modal__container__main__list__lists
-            = image_tag user.image.to_s, class: "follower_modal__container__main__list__lists__image"
+            = link_to image_tag(user.image.to_s, class:"followed_modal__container__main__list__lists__image"), user_path(user.id)
             .follower_modal__container__main__list__lists__name
               = user.nickname
           .follower_modal__container__main__list__follow
