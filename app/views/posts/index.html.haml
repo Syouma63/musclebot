@@ -9,7 +9,7 @@
   .Header__container
     .Header__log
       - if user_signed_in?
-        = link_to "MuscleBot", root_path
+        = link_to "MuscleBot", root_path, class:"musclebot-title"
       - else
         .sign_modal_content MuscleBot
     .Header__lists
@@ -22,7 +22,7 @@
           %li.Header__list
             = link_to "マイページ", user_path(current_user.id)
           %li.Header__list
-            = link_to "ログアウト", destroy_user_session_path, method: :delete
+            = link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？'}
       - else
         %ul
           %li.Header__list

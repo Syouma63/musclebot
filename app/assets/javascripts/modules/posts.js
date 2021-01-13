@@ -1,6 +1,6 @@
 $(function() {
   $(".typed").typed({
-    strings: ["Welcome to Musclebot.", "Let's Best Training."],
+    strings: ["Welcome to MuscleBot.", "自身のトレーニングを投稿しよう！！", "Let's Best Training."],
     typeSpeed: 100,
     startDelay: 1000,
     backSpeed: 20,
