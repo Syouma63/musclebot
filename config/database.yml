@@ -49,9 +49,7 @@ test:
 #
 production:
   <<: *default
-  # database: musclebot_production
-  # username: musclebot
-  # password: <%= ENV['MUSCLEBOT_DATABASE_PASSWORD'] %>
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+  database: musclebot_production
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
