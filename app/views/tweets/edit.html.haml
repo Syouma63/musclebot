@@ -1,0 +1,18 @@
+.contents.row
+  .container
+    %h3.new_title 編集 
+    = form_with model: @tweet, html: { class: "form" }, local: true do |f|
+      .input 
+        %span.tweet-form-require 必須
+        = f.text_field :name, placeholder: "メニュー名", class: 'title'
+        %span.tweet-form-require 必須
+        = f.text_area :text, placeholder: "メニュー内容", class: 'textarea'
+      = f.label :video, for: "upload-image", class: 'image' do
+        %span.tweet-form-require 必須
+        %i.far.fa-image.img-sel
+          動画を変更する
+        = f.file_field :video, class: 'img-video', id: "upload-image"
+      .img-img
+        = video_tag @tweet.video_url, controls: true, style:"width:300px", class:"select img-preview"
+      .submit
+        = f.submit '投稿する', class: 'submit_list'

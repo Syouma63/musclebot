@@ -1,20 +1,34 @@
 -# ビデオ再生
 = video_tag 'top-movie.mp4', autoplay: true, loop: true, muted: true, class: 'content__box__video'
 
+.flash-alert
+  = flash[:alert]
+.flash-notice
+  = flash[:notice]
 .Header
   .Header__container
     .Header__log
-      %a(href="/tweets") MuscleBot
+      - if user_signed_in?
+        = link_to "MuscleBot", root_path, class:"musclebot-title"
+      - else
+        .sign_modal_content MuscleBot
     .Header__lists
-      %ul
-        %li.Header__list
-          %a(href="#") ログイン
-        %li.Header__list
-          %a(href="#") 新規登録
-        -# %li.Header__list
-        -#   %a(href="#") 閲覧ページ
-        -# %li.Header__list
-        -#   %a(href="#") チャット
+      - if user_signed_in?
+        %ul
+          %li.Header__list
+            = link_to "閲覧ページ", tweets_path
+          %li.Header__list
+            = link_to "投稿する", new_tweet_path
+          %li.Header__list
+            = link_to "マイページ", user_path(current_user.id)
+          %li.Header__list
+            = link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: 'ログアウトしますか？'}
+      - else
+        %ul
+          %li.Header__list
+            = link_to "ログイン", new_user_session_path, class: "sign_modal_content"
+          %li.Header__list
+            = link_to "新規登録", new_user_registration_path
 
 -# タイピング
 .typing
@@ -22,6 +36,32 @@
     %h1
       %span.typed 
 
+-# = render '/devise/sessions/new'
+-# -# ログインモーダル表示
+-# .sign_modal_wrapper
+-# .sign_modal_sign-in
+-#   .sign_modal_sign-in__view
+-#     .sign_in_modal.sign_modal_content
+-#     = flash[:alert]
+-#     %i.fa.fa-2x.fa-times
+-#     %h2.modal-header ログインフォーム
+-#     %form.new_login{"accept-charset" => "UTF-8", :action => "/users/sign_in", :method => "post"}
+-#       %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+-#       %input{:name => "authenticity_token", :type => "hidden", :value => "oHLlAj0JDR0syLFJq8pvBZgP3Tf2VBOuOl5VCtX7PkCHoBYqWAzU0+4Jy9zYT3kVMvzGwQ1/TTBeud1NLIX/xA=="}/
+-#       .field
+-#         %label{:class => "field__label", :for => "user_email"} メールアドレス
+-#         %br/
+-#         %input{:class => "field__input", :autocomplete => "email", :autofocus => "autofocus", :name => "user[email]", :type => "email", :value => ""}/
+-#       .field
+-#         %label{:class => "field__label", :for => "user_password"} Password
+-#         %br/
+-#         %input{:class => "field__input", :autocomplete => "current-password", :name => "user[password]", :type => "password"}/
+-#       .remenber
+-#         %input{:name => "user[remember_me]", :type => "hidden", :value => "0"}/
+-#         %input{:name => "user[remember_me]", :type => "checkbox", :value => "1"}/
+-#         %label{:for => "user_remember_me"} パスワードを記憶する
+-#       .actions
+-#         %input{:class => "actions__submit", "data-disable-with" => "ログイン", :name => "commit", :type => "submit", :value => "ログイン", id: 'submit'}/
 -# おすすめの筋トレ
 -# %section.update
 -#   .C_container

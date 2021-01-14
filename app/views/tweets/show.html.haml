@@ -1,0 +1,43 @@
+.show-page
+  .show-page__container
+    .show-page__container__header
+      %h1.show-page__container__header__text 詳細ページ
+    .show-page__container__main
+      .show-page__container__main__image
+        = video_tag @tweet.video.to_s, controls: true, class:"show-page__container__main__image__images"
+      .show-page__container__main__like
+        %span#likes_buttons{ id: @tweet.id}
+          = render partial: 'likes/like', locals: { tweet: @tweet, likes: @likes}
+
+      .show-page__container__main__text
+        .show-page__container__main__text__lists
+          %h2 トレーニング名：#{@tweet.name}
+        .show-page__container__main__text__lists
+          %h2 トレーニング内容：#{@tweet.text}
+        .show-page_time
+          投稿日：
+          = @tweet.created_at.strftime("%Y-%m-%d %H:%M")
+      .show-page__container__main__comments
+        .show-page__container__main__comments__lists
+          %h4.show-page__container__main__comments__lists__list コメント一覧
+          .show-page__container__main__comments__lists__main
+            - @comments.each do |comment|
+              .show-page__container__main__comments__lists__main__link
+                .show-page__container__main__comments__lists__main__link__left
+                  %strong
+                    = link_to "#{comment.user.nickname} :", "/users/#{comment.user_id}", class:"show-page__container__main__comments__lists__main__link__left__a"
+                  = comment.text
+                .show-page__container__main__comments__lists__main__link__right
+                  = comment.created_at.strftime("%Y-%m-%d %H:%M")
+
+        .show-page__container__main__comments__form
+          - if user_signed_in?
+            = form_with model: [@tweet, @comment], local: true, id: "new_comment", remote: true do |f|
+              = f.text_area :text, placeholder: "コメントを追加", rows: "2", class:"show-page__container__main__comments__form__textarea"
+              = button_tag type: 'submit', class: "show-page__container__main__comments__form__submit" do
+                %i.fas.fa-paper-plane
+          - else
+            %strong
+              %p ＊＊＊コメントの投稿には新規登録/ログインが必要です＊＊＊
+
+    

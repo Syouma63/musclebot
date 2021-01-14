@@ -53,6 +53,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'unicorn', '5.4.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -71,3 +72,9 @@ gem 'font-awesome-sass'
 gem 'carrierwave'
 
 gem 'mini_magick'
+
+gem 'devise'
+
+gem 'devise-i18n'
+
+gem 'devise-i18n-views'

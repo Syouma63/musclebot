@@ -1,0 +1,11 @@
+.search-container
+  .search
+    = render "user-search"
+  .search-scroll
+    - @users.each do |user|
+      .search__list
+        = link_to image_tag(user.image.to_s, class:"search__list__image"), user_path(user.id)
+        .search__list__name
+          = user.nickname
+
+              

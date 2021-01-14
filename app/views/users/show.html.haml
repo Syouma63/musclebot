@@ -1,0 +1,89 @@
+.mypage
+  .search
+    = render "user-search"
+  .mypage__container
+    .mypage__container__header
+      .mypage__container__header__picture
+        = image_tag @user.image.to_s, class: "mypage__container__header__picture__image"
+      .mypage__container__header__main
+        .mypage__container__header__main__name
+          = @user.nickname
+          - unless @user == current_user
+            %span#follow_button_{ id: @user.id}
+              = render "users/follow-button", user: @user
+          - else
+            = link_to "設定", edit_user_registration_path, class:"follow-black"
+        %ul.mypage__container__header__main__lists
+          %li.mypage__container__header__main__lists__list 投稿#{@count}件
+          %li.mypage__container__header__main__lists__list.follower_modal_content#follower-count_{ id: @user.id} フォロー#{@user.follower.count}人
+          %li.mypage__container__header__main__lists__list.followed_modal_content#followed-count_{ id: @user.id} フォロワー#{@user.followed.count}人
+        .mypage__container__header__main__text
+          コメント：
+          = @user.text
+        
+
+    -# ヘッダー部分
+    .mypage__container__main
+      .mypage__container__main__image
+        - @tweets.each do |tweet|
+          %section.image-image
+            = link_to video_tag(tweet.video.url, controls: true, class:"mypage__container__main__image__images"), tweet_path(tweet.id)
+            .mypage__container__main__image__name
+              %p トレーニング名： #{tweet.name}
+            .mypage__container__main__image__text
+              %p トレーニング内容： #{tweet.text}
+
+-# フォロワーモーダル表示         
+.followed_modal_wrapper
+.followed_modal
+  %i.fa.fa-2x.fa-times
+  .followed_modal__container
+    .followed_modal__container__header
+      .followed_modal__container__header__name フォロワー
+    .followed_modal__container__main
+      - @user.follower_user.each do |user|
+        .followed_modal__container__main__list
+          .followed_modal__container__main__list__lists
+            = link_to image_tag(user.image.to_s, class:"followed_modal__container__main__list__lists__image"), user_path(user.id)
+            .followed_modal__container__main__list__lists__name
+              = user.nickname
+          .followed_modal__container__main__list__follow
+            %span#follow-buttons_{ id: user.id}
+              = render "users/follow-buttons", user: user
+            -# - if user == current_user
+            -#   = link_to "", "#"
+            -# - else
+            -#   - unless current_user.following?(user)
+            -#     = link_to "フォローする", follow_path(user.id), method: :POST, class: "follow-black"
+            -#   - else
+            -#     = link_to "フォロー中", unfollow_path(user.id), method: :POST, class: "follow-black"
+
+-# フォローモーダル表示         
+.follower_modal_wrapper
+.follower_modal
+  %i.fa.fa-2x.fa-times
+  .follower_modal__container
+    .follower_modal__container__header
+      .follower_modal__container__header__name フォロー
+    .follower_modal__container__main
+      - @user.following_user.each do |user|
+        .follower_modal__container__main__list
+          .follower_modal__container__main__list__lists
+            = link_to image_tag(user.image.to_s, class:"followed_modal__container__main__list__lists__image"), user_path(user.id)
+            .follower_modal__container__main__list__lists__name
+              = user.nickname
+          .follower_modal__container__main__list__follow
+            %span#follow-buttons_{ id: user.id}
+              = render "users/follow-buttons", user: user
+
+            -# - if user == current_user
+            -#   = link_to "", "#"
+            -# - else
+            -#   - unless current_user.following?(user)
+            -#     = link_to "フォローする", follow_path(user.id), method: :POST, class: "follow-black"
+            -#   - else
+            -#     = link_to "フォロー中", unfollow_path(user.id), method: :POST, class: "follow-black"
+        
+
+    
+    
