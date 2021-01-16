@@ -3,7 +3,7 @@
 railsを使用し、トレーニングに特化したSNSを開発しました。
 ## URL 
 http://54.199.50.192:3000/
-## Email PASS
+## ログイン時のEmail・PASS
 - Email: taro@taro
 - PASS: tarotaro
 
@@ -66,3 +66,76 @@ http://54.199.50.192:3000/
 - 空欄でクリックしたら全てのユーザーを表示
 - 表示されたユーザーをクリックしたらユーザーページに遷移する
 
+
+## usersテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|nickname|string|null: false|
+|email|string|null: false, unique: true|
+|encrypted_password|string|null: false|
+|image|string|
+|text|text|
+
+### Association
+- has_many :tweets, dependent: :destroy
+- has_many :likes, dependent: :destroy
+- has_many :comments, dependent: :destroy
+- has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy 
+- has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+- has_many :following_user, through: :follower, source: :followed
+- has_many :follower_user, through: :followed, source: :follower
+
+### tweetsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|text|text|null: false|
+|video|string||
+|user_id|integer|null: false|
+|likes_count|integer|default: "0"|
+
+### Association
+
+- belongs_to :user
+- has_many :comments, dependent: :destroy
+- has_many :likes, dependent: :destroy
+
+
+### commentsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|
+|tweet_id|integer|
+|text|text|
+
+### Association
+
+- belongs_to :tweet
+- belongs_to :user
+- validates :text, presence: true
+
+
+### relationshipsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|follower_id|integer|
+|followed_id|integer|
+
+### Association
+
+- belongs_to :follower, class_name: "User"
+- belongs_to :followed, class_name: "User"
+
+### likesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user|references|null: false, foreign_key: true|
+|tweet|references|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :tweet, counter_cache: :likes_count
