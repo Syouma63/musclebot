@@ -32,3 +32,10 @@ http://54.199.50.192:3000/
 - コメント機能（ajax)
 
 ## 投稿ページ
+![tweet-new](https://user-images.githubusercontent.com/68550855/104796762-89310b80-57fc-11eb-94d2-8d09dafd63fd.gif)
+
+- 動画のプレビュー機能
+
+## 投稿編集ページ
+
+
