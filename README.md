@@ -8,7 +8,7 @@ http://54.199.50.192:3000/
 - PASS: tarotaro
 
 ## トップページ
-![video](https://user-images.githubusercontent.com/68550855/104795580-da3c0200-57f2-11eb-9443-968c04b12431.gif)
+![video](https://user-images.githubusercontent.com/68550855/104807684-0b80f600-5824-11eb-940e-5969d8166ff4.gif)
 
 - deviseでのログイン・ログアウト機能
 - ログイン時とログアウト時でヘッダーの表示を変えています。
@@ -27,8 +27,9 @@ http://54.199.50.192:3000/
 - ユーザー検索機能
 
 ## ツイート詳細ページ
-![tweet-show](https://i.gyazo.com/07ae824a52e12d04e64026900f91adeb.png "tweet-show")
+![tweet-show](https://user-images.githubusercontent.com/68550855/104807601-7b42b100-5823-11eb-8356-e56107196d44.gif)
 
+- いいね機能(ajax)
 - コメント機能（ajax)
 
 ## 投稿ページ
